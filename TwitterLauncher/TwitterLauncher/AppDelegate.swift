@@ -28,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let shelterView = UIView(frame: view.frame)
         shelterView.backgroundColor = .white
         view.addSubview(shelterView)
-        
-        window!.backgroundColor = UIColor(red: 29 / 255.0, green: 161 / 255.0, blue: 242 / 255.0, alpha: 1)
+
+        window?.backgroundColor = UIColor(red: 29 / 255.0, green: 161 / 255.0, blue: 242 / 255.0, alpha: 1)
         
         let logoAnimation = CAKeyframeAnimation(keyPath: "bounds")
         logoAnimation.beginTime = CACurrentMediaTime() + 1
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logoAnimation.isRemovedOnCompletion = false
         logoAnimation.fillMode = kCAFillModeForwards
         logoLayer.add(logoAnimation, forKey: "zoomAnimation")
-        
+
         let mainViewAnimation = CAKeyframeAnimation(keyPath: "transform")
         mainViewAnimation.beginTime = CACurrentMediaTime() + 1.1
         mainViewAnimation.duration = 0.6
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     NSValue(caTransform3D: CATransform3DIdentity)]
         view.layer.add(mainViewAnimation, forKey: "transformAnimation")
         view.layer.transform = CATransform3DIdentity
-        
+
         UIView.animate(withDuration: 0.3, delay: 1.4, options: .curveLinear, animations: {
             shelterView.alpha = 0
         }) { (_) in
