@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let view = window!.rootViewController!.view!
         
         let logoLayer = CALayer()
-        logoLayer.bounds = CGRect(x: 0, y: 0, width: 90, height: 90)
+        logoLayer.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
         logoLayer.position = view.center
         logoLayer.contents = UIImage(named: "logo")?.cgImage
         view.layer.mask = logoLayer
@@ -29,34 +29,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         shelterView.backgroundColor = .white
         view.addSubview(shelterView)
         
-        UIApplication.shared.delegate?.window??.backgroundColor = UIColor(red: 83 / 255.0, green: 172 / 255.0, blue: 238 / 255.0, alpha: 1)
+        window!.backgroundColor = UIColor(red: 29 / 255.0, green: 161 / 255.0, blue: 242 / 255.0, alpha: 1)
         
-        let animation = CAKeyframeAnimation(keyPath: "bounds")
-        animation.beginTime = CACurrentMediaTime() + 1
-        animation.duration = 1
-        animation.keyTimes = [0, 0.4, 1]
-        animation.values = [NSValue(cgRect: CGRect(x: 0, y: 0, width: 90, height: 90)),
-                            NSValue(cgRect: CGRect(x: 0, y: 0, width: 70, height: 70)),
+        let logoAnimation = CAKeyframeAnimation(keyPath: "bounds")
+        logoAnimation.beginTime = CACurrentMediaTime() + 1
+        logoAnimation.duration = 1
+        logoAnimation.keyTimes = [0, 0.4, 1]
+        logoAnimation.values = [NSValue(cgRect: CGRect(x: 0, y: 0, width: 100, height: 100)),
+                            NSValue(cgRect: CGRect(x: 0, y: 0, width: 85, height: 85)),
                             NSValue(cgRect: CGRect(x: 0, y: 0, width: 4500, height: 4500))]
-        animation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut),
-                                     CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)];
-        animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
-        logoLayer.add(animation, forKey: "zoomAnimation")
+        logoAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut),
+                                     CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)]
+        logoAnimation.isRemovedOnCompletion = false
+        logoAnimation.fillMode = kCAFillModeForwards
+        logoLayer.add(logoAnimation, forKey: "zoomAnimation")
         
-        view.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+        let mainViewAnimation = CAKeyframeAnimation(keyPath: "transform")
+        mainViewAnimation.beginTime = CACurrentMediaTime() + 1.1
+        mainViewAnimation.duration = 0.6
+        mainViewAnimation.keyTimes = [0, 0.5, 1]
+        mainViewAnimation.values = [NSValue(caTransform3D: CATransform3DIdentity),
+                                    NSValue(caTransform3D: CATransform3DScale(CATransform3DIdentity, 1.1, 1.1, 1)),
+                                    NSValue(caTransform3D: CATransform3DIdentity)]
+        view.layer.add(mainViewAnimation, forKey: "transformAnimation")
+        view.layer.transform = CATransform3DIdentity
         
-        UIView.animate(withDuration: 0.6, delay: 1.2, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.3, delay: 1.4, options: .curveLinear, animations: {
             shelterView.alpha = 0
         }) { (_) in
             shelterView.removeFromSuperview()
-        }
-        UIView.animate(withDuration: 0.1, delay: 1.55, options: .curveLinear, animations: {
-            view.transform = CGAffineTransform.identity
-        }) { (_) in
             view.layer.mask = nil
         }
-        
         return true
     }
 

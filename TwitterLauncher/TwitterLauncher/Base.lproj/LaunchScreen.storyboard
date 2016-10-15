@@ -18,17 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="vO6-mc-ddU">
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Gcs-uK-qoX">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="AkT-uB-or1"/>
-                                    <constraint firstAttribute="width" constant="90" id="nCy-bu-w0J"/>
+                                    <constraint firstAttribute="height" constant="100" id="Sec-Cz-KAZ"/>
+                                    <constraint firstAttribute="width" constant="100" id="iTT-HQ-AAC"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.32549019607843138" green="0.67450980392156867" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.63137254901960782" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vO6-mc-ddU" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0M1-DB-IXa"/>
-                            <constraint firstItem="vO6-mc-ddU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="M6V-Kl-VIo"/>
+                            <constraint firstItem="Gcs-uK-qoX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Ms4-BT-6sp"/>
+                            <constraint firstItem="Gcs-uK-qoX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="bHL-r1-fjk"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="1687" height="1687"/>
+        <image name="logo" width="843" height="843"/>
     </resources>
 </document>
